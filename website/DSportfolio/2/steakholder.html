@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stakeholder Feedback</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .instructions {
+            color: #007BFF;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .image-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+            cursor: pointer; /* Indicate that it's clickable */
+        }
+        .image-card:hover {
+            transform: scale(1.02);
+        }
+        .image-card img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+        }
+        .image-card p {
+            padding: 10px;
+            color: #444;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.8); /* Black background with transparency */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal p {
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stakeholder Feedback</h1>
+        <p class="instructions">Click on the images to enlarge and view the feedback!</p>
+        <p>Below are some images showcasing the feedback and testimonials from stakeholders and teammates.</p>
+        
+        <div class="gallery">
+            <div class="image-card" onclick="openModal('shfb1.png', 'Feedback from Stakeholder/Teammate 1')">
+                <img src="shfb1.png" alt="Feedback from Stakeholder/Teammate 1">
+                <p>Feedback from Stakeholder/Teammate 1</p>
+            </div>
+            <div class="image-card" onclick="openModal('shfb2.png', 'Feedback from Stakeholder/Teammate 2')">
+                <img src="shfb2.png" alt="Feedback from Stakeholder/Teammate 2">
+                <p>Feedback from Stakeholder/Teammate 2</p>
+            </div>
+            <div class="image-card" onclick="openModal('shfb3.png', 'Feedback from Stakeholder/Teammate 3')">
+                <img src="shfb3.png" alt="Feedback from Stakeholder/Teammate 3">
+                <p>Feedback from Stakeholder/Teammate 3</p>
+            </div>
+            <div class="image-card" onclick="openModal('shfb4.jpg', 'Feedback from Stakeholder/Teammate 4')">
+                <img src="shfb4.jpg" alt="Feedback from Stakeholder/Teammate 4">
+                <p>Feedback from Stakeholder/Teammate 4</p>
+            </div>
+            <div class="image-card" onclick="openModal('shfb5.jpg', 'Feedback from Stakeholder/Teammate 5')">
+                <img src="shfb5.jpg" alt="Feedback from Stakeholder/Teammate 5">
+                <p>Feedback from Stakeholder/Teammate 5</p>
+            </div>     
+            <div class="image-card" onclick="openModal('shfb6.jpg', 'Feedback from Stakeholder/Teammate 6')">
+                <img src="shfb6.jpg" alt="Feedback from Stakeholder/Teammate 6">
+                <p>Feedback from Stakeholder/Teammate 6</p>
+            </div>
+            <div class="image-card" onclick="openModal('shfb7.jpg', 'Feedback from Stakeholder/Teammate 7')">
+                <img src="shfb7.jpg" alt="Feedback from Stakeholder/Teammate 7">
+                <p>Feedback from Stakeholder/Teammate 7</p>
+            </div>
+            <!-- Add more image cards as needed -->
+        </div>
+    </div>
+
+    <!-- Modal for displaying the larger image -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <p id="modalText"></p>
+    </div>
+
+    <script>
+        function openModal(imageSrc, imageText) {
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("modalImg");
+            const modalText = document.getElementById("modalText");
+            modal.style.display = "flex"; // Show modal
+            modalImg.src = imageSrc;
+            modalText.innerText = imageText;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none"; // Hide modal
+        }
+
+        // Close modal when clicking outside of the image
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
